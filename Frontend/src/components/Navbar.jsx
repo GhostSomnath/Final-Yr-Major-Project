@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaUser, FaMoon, FaSun, FaBars, FaTimes } from 'react-icons/fa';
+import logo from '../assets/logo.png'; // Import logo image
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,7 +17,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 flex items-center justify-between py-4">
         {/* Logo */}
         <div className="flex-shrink-0">
-          <img src="/logo.png" alt="Logo" className="h-10" />
+          <img src={logo} alt="Logo" className="h-10" /> {/* Use imported logo */}
         </div>
 
         {/* Hamburger Button */}

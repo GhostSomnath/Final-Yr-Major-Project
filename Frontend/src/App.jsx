@@ -1,23 +1,34 @@
 import React from 'react';
-import Footer from './components/Footer';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero1 from './components/Hero1';
-import Hero2 from './components/Hero2';
+import Footer from './components/Footer';
+import Home from './Pages/Home';
+import Internships from './Pages/Internships';
+import Updates from './Pages/Updates';
+import About from './Pages/About';
+import ContactUs from './Pages/ContactUs';
 
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <header className="bg-white text-sky-600 font-bold py-4 text-center">
-      </header>
-      <main className="flex-grow">
-        <Hero1 />
-        <Hero2 />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <header className="bg-white text-sky-600 font-bold py-4 text-center">
+        </header>
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/internships" element={<Internships />} />
+            <Route path="/updates" element={<Updates />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<ContactUs />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

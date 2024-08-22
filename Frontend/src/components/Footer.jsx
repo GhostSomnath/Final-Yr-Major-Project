@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../assets/logo.png'; // Import the logo image
 
 const Footer = () => {
   return (
@@ -7,8 +8,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Logo */}
           <div className="mb-4 md:mb-0">
-          <img src="../assets/logo.png" alt="Logo" className="h-12" />
-
+            <img src={logo} alt="Logo" className="h-12" /> {/* Use imported logo */}
           </div>
 
           {/* Navigation Links */}
