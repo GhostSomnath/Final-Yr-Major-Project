@@ -27,7 +27,7 @@ const Hero2 = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-sky-100 text-sky-700 py-20"
+      className="relative bg-white text-sky-600 py-20"
     >
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center md:items-start text-center md:text-left">
         {/* Hero Image */}
