@@ -1,11 +1,9 @@
 import React from 'react'
-import Navbar from './components/Navbar'
 
 function App() {
   return (
     <div>
-      <h1>Hello, World!</h1>
-      
+      <h1 className="bg-blue-500 text-white p-4">Hello, Tailwind!</h1>
     </div>
   )
 }
