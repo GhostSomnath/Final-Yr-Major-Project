@@ -2,6 +2,8 @@ import React from 'react';
 import Footer from './components/Footer';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Navbar from './components/Navbar';
+import Hero1 from './components/Hero1';
+import Hero2 from './components/Hero2';
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
           
           
         </div>
+        <Hero1 />
+        <Hero2 />
       </main>
       <Footer />
     </div>
