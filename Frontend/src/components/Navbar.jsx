@@ -1,23 +1,26 @@
 import React, { useState } from 'react';
 import { FaUser, FaMoon, FaSun, FaBars, FaTimes } from 'react-icons/fa';
 import logo from '../assets/logo.png'; // Import logo image
+import { useTheme } from '../context/themeContext';
 
 const Navbar = () => {
+  const {theme,setTheme}=useTheme();
+  console.log(theme);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
-    document.body.classList.toggle('dark', !isDarkMode);
+    isDarkMode?setTheme("light"):setTheme("dark");
   };
 
   return (
-    <nav className={`bg-white text-sky-700 border-b border-sky-300 sticky top-0 z-50 ${isDarkMode ? 'dark' : ''}`}>
+    <nav className={`text-sky-700 border-b border-sky-300 sticky top-0 z-50 ${theme} soft`}>
       <div className="container mx-auto px-4 flex items-center justify-between py-4">
         {/* Logo */}
-        <div className="flex-shrink-0">
-          <img src={logo} alt="Logo" className="h-10" /> {/* Use imported logo */}
+        <div className="h-10">
+          <img src={logo} alt="Logo" className="h-full object-cover" /> {/* Use imported logo */}
         </div>
 
         {/* Hamburger Button */}

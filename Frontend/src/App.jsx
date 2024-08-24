@@ -10,14 +10,14 @@ import ContactUs from './Pages/ContactUs';
 
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
+import "./App.css";
 function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
         <Navbar />
-        <header className="bg-white text-sky-600 font-bold py-4 text-center">
-        </header>
+        {/* <header className="bg-white text-sky-600 font-bold py-4 text-center">
+        </header> */}
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />

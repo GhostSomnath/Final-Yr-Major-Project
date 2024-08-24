@@ -12,7 +12,7 @@ import Hero3 from '../components/Hero3';
 
 function Home() {
   return (
-    <div>
+    <div className=''>
       <Hero1 />
       <Hero2 />
       <Hero3 />

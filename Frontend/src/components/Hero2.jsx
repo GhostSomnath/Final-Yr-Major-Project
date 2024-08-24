@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import heroImage from '../assets/ftimg13.png'; // Replace with your image path
+import { useTheme } from '../context/themeContext';
 
 const Hero2 = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
-
+  const {theme} =useTheme();
   useEffect(() => {
     const handleScroll = () => {
       if (sectionRef.current) {
@@ -25,7 +26,7 @@ const Hero2 = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white text-sky-600 py-20"
+      className={"relative  text-sky-600 py-20 soft "+theme}
     >
       <motion.div
         className="container mx-auto px-4 flex flex-col md:flex-row items-center md:items-start text-center md:text-left"
