@@ -7,6 +7,7 @@ import img1 from '../assets/ftimg3.png';
 import img2 from '../assets/ftimg11.png';
 import img3 from '../assets/ftimg7.png';
 import img4 from '../assets/ftimg16.png';
+import { useTheme } from '../context/themeContext';
 
 const internshipsData = {
   basic: [
@@ -33,8 +34,9 @@ const allInternships = [
 ];
 
 function InternshipCard({ image, title }) {
+  const {theme}=useTheme();
   return (
-    <div className="border p-4 rounded-md shadow-md flex flex-col items-center">
+    <div className={"border p-4 rounded-md shadow-md flex flex-col items-center"+theme}>
       <img src={image} alt={title} className="w-full h-48 object-cover rounded-md mb-4" />
       <h2 className="font-bold text-lg text-center mb-4">{title}</h2>
       <button className="bg-sky-600 text-white px-4 py-2 rounded">Enroll</button>
@@ -44,13 +46,13 @@ function InternshipCard({ image, title }) {
 
 function Internships() {
   const [selectedIndex, setSelectedIndex] = useState(0);
-
+  const {theme}=useTheme();
   const handleTabSelect = (index) => {
     setSelectedIndex(index);
   };
 
   return (
-    <div className="p-8">
+    <div className={"p-8 "+theme}>
       {/* Rules Section */}
       <div className="mb-6 border-l-4 border-sky-500 pl-4 text-red-600">
         <h3 className="font-bold text-lg mb-2">Key Features:</h3>
@@ -80,7 +82,7 @@ function Internships() {
       </div>
 
       <Tabs selectedIndex={selectedIndex} onSelect={handleTabSelect}>
-        <TabList className="flex flex-wrap space-x-2 md:space-x-4 border-b-2">
+        <TabList className="flex flex-wrap space-x-2 md:space-x-4 border-b-2 mb-4">
           <Tab className={`p-3 md:p-4 cursor-pointer rounded-t-lg ${selectedIndex === 0 ? 'bg-sky-500 text-white' : 'bg-white text-sky-600'}`}>
             All
           </Tab>

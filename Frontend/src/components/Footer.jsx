@@ -5,7 +5,7 @@ import { useTheme } from '../context/themeContext';
 const Footer = () => {
   const {theme} =useTheme();
   return (
-    <footer className={" text-sky-700 py-8 border border-sky-300 soft "+theme}>
+    <footer className={" text-sky-700 py-8 border border-l-0 border-r-0 border-b-0 border-sky-300 soft "+theme}>
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Logo */}
