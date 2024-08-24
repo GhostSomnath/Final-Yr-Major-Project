@@ -1,9 +1,11 @@
 import React from 'react';
 import logo from '../assets/logo.png'; // Import the logo image
+import { useTheme } from '../context/themeContext';
 
 const Footer = () => {
+  const {theme} =useTheme();
   return (
-    <footer className="bg-white text-sky-700 py-8 border border-sky-300">
+    <footer className={" text-sky-700 py-8 border border-sky-300 soft "+theme}>
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Logo */}

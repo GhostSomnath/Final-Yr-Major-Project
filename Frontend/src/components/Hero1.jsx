@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import heroImage from '../assets/ftimg22.png'; // Replace with your image path
+import { useTheme } from '../context/themeContext';
 
 const Hero1 = () => {
+  const {theme}=useTheme();
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -16,7 +18,7 @@ const Hero1 = () => {
   }, []);
 
   return (
-    <section className="relative bg-white text-sky-600 py-20">
+    <section className={`relative  text-sky-600 py-20 ${theme} soft`}>
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center md:items-start text-center md:text-left">
         {/* Content */}
         <div className="flex-1 mb-10 md:mb-0 md:pr-10">
