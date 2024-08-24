@@ -1,17 +1,17 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import heroImage from '../assets/ftimg13.png'; // Replace with your image path
-import { useTheme } from '../context/themeContext';
+import heroImage from '../assets/ftimg23.png'; // Replace with your image path
 
-const Hero2 = () => {
+const Hero3 = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
-  const {theme} =useTheme();
+
   useEffect(() => {
     const handleScroll = () => {
       if (sectionRef.current) {
         const { top, bottom } = sectionRef.current.getBoundingClientRect();
+        // Check if the section is visible
         setIsVisible(top < window.innerHeight && bottom > 0);
       }
       setScrollY(window.scrollY);
@@ -26,21 +26,22 @@ const Hero2 = () => {
   return (
     <section
       ref={sectionRef}
-      className={"relative  text-sky-600 py-20 soft "+theme}
+      className="relative bg-white text-sky-600 py-20"
     >
       <motion.div
         className="container mx-auto px-4 flex flex-col md:flex-row items-center md:items-start text-center md:text-left"
         initial={{ x: '100vw' }} // Start offscreen to the right
         animate={{ x: isVisible ? '0' : '100vw' }} // Animate to the screen
         transition={{ type: 'spring', stiffness: 50, damping: 15 }} // Smooth and gradual movement
+        style={{ transform: `translateX(${scrollY * 0.05}px)` }} // Decreased speed
       >
         {/* Hero Image */}
         <motion.img
           src={heroImage}
           alt="Hero"
           className="w-full max-w-lg md:mr-10"
-          style={{ transform: `translateX(${Math.max(0, (scrollY - window.innerHeight / 2) * 0.2)}px)` }} // Horizontal movement on scroll
-          transition={{ type: 'spring', stiffness: 50, damping: 15 }} // Smooth and gradual movement
+          initial={{ x: 0 }} // No movement on scroll
+          animate={{ x: 0 }} // Keep in place after entrance
         />
 
         {/* Content */}
@@ -67,4 +68,4 @@ const Hero2 = () => {
   );
 };
 
-export default Hero2;
+export default Hero3;
