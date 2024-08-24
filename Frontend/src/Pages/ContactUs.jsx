@@ -1,8 +1,11 @@
-import React from 'react'
+import { useTheme } from '../context/themeContext'
 
 function ContactUs() {
+  const {theme}=useTheme();
   return (
-    <div>ContactUs</div>
+    <div className={'soft '+theme}>
+      ContactUs
+    </div>
   )
 }
 

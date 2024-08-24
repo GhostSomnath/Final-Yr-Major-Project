@@ -1,6 +1,8 @@
+import { useTheme } from '../context/themeContext'
 import React, { useEffect, useState } from 'react';
 
 function Updates() {
+  const {theme}=useTheme();
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,7 +25,7 @@ function Updates() {
   if (error) return <div className="p-4 text-center text-red-500">{error}</div>;
 
   return (
-    <div className="p-8 bg-white shadow-md rounded-lg max-w-4xl mx-auto">
+    <div className={"p-8 bg-white shadow-md rounded-lg max-w-4xl mx-auto "+theme}>
       <h1 className="text-3xl font-bold text-sky-500 mb-6 text-center">Latest Updates</h1>
       <div className="space-y-6">
         {messages.length > 0 ? (

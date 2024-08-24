@@ -6,13 +6,16 @@
 import React from 'react';
 import Hero1 from '../components/Hero1';
 import Hero2 from '../components/Hero2';
+
+import { useTheme } from '../context/themeContext';
 import Hero3 from '../components/Hero3';
 // import ScrollAnimation from 'react-animate-on-scroll';
 
 
 function Home() {
+  const {theme} =useTheme();
   return (
-    <div className=''>
+    <div className={theme}>
       <Hero1 />
       <Hero2 />
       <Hero3 />

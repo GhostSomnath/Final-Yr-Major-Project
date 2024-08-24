@@ -3,7 +3,7 @@ import { FaUser, FaMoon, FaSun, FaBars, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import logo from '../assets/logo.png'; // Import logo image
 import { useTheme } from '../context/themeContext';
-
+import {Link} from "react-router-dom";
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -67,6 +67,7 @@ const Navbar = () => {
 
           {/* Menu Items */}
           <div className="flex flex-col items-center space-y-4 mt-10">
+
             <Link to="/" className="hover:text-sky-500">Home</Link>
             <Link to="/internships" className="hover:text-sky-500">Internships</Link>
             <Link to="/updates" className="hover:text-sky-500">Updates</Link>
