@@ -8,6 +8,7 @@ import Updates from './Pages/Updates';
 import About from './Pages/About';
 import ContactUs from './Pages/ContactUs';
 
+
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import "./App.css";
 function App() {
@@ -28,6 +29,12 @@ function App() {
         </main>
         <Footer />
       </div>
+
+
+
+
+      
+
     </Router>
   );
 }
