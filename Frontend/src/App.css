@@ -40,8 +40,20 @@
 }
 .dark{
   background-color: black;
+  color:white;
 }
 .soft{
   transition: all;
   transition-duration: 0.5s;
+}
+.soft-little{
+  transition: all;
+  transition-duration: 0.2s;
+}
+.swalling:hover{
+  transform: scale(1.2);
+}
+.active{
+  transform: scale(1.2);
+  border-bottom: 2px solid skyblue;
 }

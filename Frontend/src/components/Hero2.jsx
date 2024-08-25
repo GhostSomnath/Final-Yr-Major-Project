@@ -24,7 +24,7 @@ const Hero2 = () => {
   return (
     <section
       ref={sectionRef}
-      className={"relative  text-sky-600 py-20 soft "}
+      className={"relative  text-sky-600 py-20 soft overflow-x-hidden"}
     >
       <motion.div
         className="container mx-auto px-4 flex flex-col md:flex-row items-center md:items-start text-center md:text-left"

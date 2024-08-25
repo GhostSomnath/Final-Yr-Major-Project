@@ -16,7 +16,7 @@ import Hero4 from '../components/Hero4';
 function Home() {
   const {theme} =useTheme();
   return (
-    <div className={theme}>
+    <div className={theme+""}>
       <Hero1 />
       <Hero2 />
       <Hero3 />

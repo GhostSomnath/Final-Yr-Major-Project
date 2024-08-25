@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaUser, FaMoon, FaSun, FaBars, FaTimes } from 'react-icons/fa';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import logo from '../assets/logo.png'; // Import logo image
 import { useTheme } from '../context/themeContext';
-
+import {Link, useLocation, useParams} from "react-router-dom";
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-
+  const {pathname}=useLocation();
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
     isDarkMode ? setTheme('light') : setTheme('dark');
   };
-
   return (
     <nav className={`text-sky-700 border-b border-sky-300 sticky top-0 z-50 ${theme} soft`}>
       <div className="container mx-auto px-4 flex items-center justify-between py-4">
@@ -31,24 +29,24 @@ const Navbar = () => {
         </div>
 
         {/* Navigation Links (Desktop) */}
-        <div className="hidden md:flex flex-grow justify-center space-x-6">
-          <Link to="/" className="hover:text-sky-500">Home</Link>
-          <Link to="/internships" className="hover:text-sky-500">Internships</Link>
-          <Link to="/updates" className="hover:text-sky-500">Updates</Link>
-          <Link to="/about" className="hover:text-sky-500">About</Link>
-          <Link to="/contact" className="hover:text-sky-500">Contact Us</Link>
+        <div className="hidden md:flex flex-grow justify-center space-x-6 soft">
+          <Link to="/" className={`hover:text-sky-500 swalling soft-little ${pathname=="/"?"active text-sky-500":""}`}>Home</Link>
+          <Link to="/internships" className={`hover:text-sky-500 swalling soft-little ${pathname=="/internships"?"active text-sky-500":""}`}>Internships</Link>
+          <Link to="/updates" className={`hover:text-sky-500 swalling soft-little ${pathname=="/updates"?"active text-sky-500":""}`}>Updates</Link>
+          <Link to="/about" className={`hover:text-sky-500 swalling soft-little ${pathname=="/about"?"active text-sky-500":""}`}>About</Link>
+          <Link to="/contact" className={`hover:text-sky-500 swalling soft-little ${pathname=="/contact"?"active text-sky-500":""}`}>Contact Us</Link>
         </div>
 
         {/* Right End Buttons (Desktop) */}
         <div className="hidden md:flex space-x-4 items-center">
-          <button onClick={toggleTheme} className="text-sky-700 hover:text-sky-500 flex items-center space-x-2">
+          <button onClick={toggleTheme} className="text-sky-700 hover:text-sky-500 flex items-center space-x-2  swalling soft-little">
             {isDarkMode ? <FaMoon size={20} /> : <FaSun size={20} />}
             <span>Theme</span>
           </button>
-          <button className="text-sky-700 hover:text-sky-500 flex items-center space-x-2">
+          <Link to="/profile" className="text-sky-700 hover:text-sky-500 flex items-center space-x-2  swalling soft-little">
             <FaUser size={20} />
             <span>Profile</span>
-          </button>
+          </Link>
         </div>
       </div>
 
