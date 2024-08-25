@@ -5,5 +5,16 @@
 
 html {
     scroll-behavior: smooth;
-  }
+}
   
+/* Hide vertical scrollbar but allow scrolling */
+body {
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  background: transparent; /* Chrome, Safari, Opera */
+}
