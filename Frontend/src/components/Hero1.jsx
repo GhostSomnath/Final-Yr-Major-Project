@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import heroImage from '../assets/ftimg22.png'; // Replace with your image path
+import { useTheme } from '../context/themeContext'; // Import theme context
 
 // eslint-disable-next-line react/prop-types
 const Slide = ({ children, delay = 0 }) => {
@@ -17,6 +18,7 @@ const Slide = ({ children, delay = 0 }) => {
 };
 
 const Hero1 = () => {
+  const { theme } = useTheme();
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -30,7 +32,7 @@ const Hero1 = () => {
   }, []);
 
   return (
-    <section className={`relative  text-sky-600 py-20 soft`}>
+    <section className={`relative py-20 soft ${theme} ${theme === 'dark' ? 'text-sky-200' : 'text-sky-600'}`}>
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center md:items-start text-center md:text-left">
         {/* Content */}
         <div className="flex-1 mb-10 md:mb-0 md:pr-10">
@@ -57,15 +59,14 @@ const Hero1 = () => {
         </div>
 
         {/* Hero Image */}
-
         <Slide delay={0.5}>
-        <motion.img
-          src={heroImage}
-          alt="Hero image showcasing our content"
-          className="w-full max-w-lg"
-          style={{ transform: `translateX(${-scrollY * 0.5}px)` }} // Move image horizontally to the left on scroll up
-          transition={{ type: 'spring', stiffness: 100 }}
-        />
+          <motion.img
+            src={heroImage}
+            alt="Hero image showcasing our content"
+            className="w-full max-w-lg"
+            style={{ transform: `translateX(${-scrollY * 0.5}px)` }} // Move image horizontally to the left on scroll up
+            transition={{ type: 'spring', stiffness: 100 }}
+          />
         </Slide>
       </div>
     </section>

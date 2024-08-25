@@ -3,9 +3,10 @@ import logo from '../assets/logo.png'; // Import the logo image
 import { useTheme } from '../context/themeContext';
 
 const Footer = () => {
-  const {theme} =useTheme();
+  const { theme } = useTheme(); // Destructure theme from useTheme hook
+
   return (
-    <footer className={" text-sky-700 py-8 border border-l-0 border-r-0 border-b-0 border-sky-300 soft "+theme}>
+    <footer className={`text-sky-700 py-8 border border-l-0 border-r-0 border-b-0 border-sky-300 soft ${theme}`}>
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Logo */}
@@ -15,7 +16,7 @@ const Footer = () => {
 
           {/* Navigation Links */}
           <div className="mb-4 md:mb-0">
-            <ul className="flex flex-col md:flex-row md:space-x-8 text-center">
+            <ul className={`flex flex-col md:flex-row md:space-x-8 text-center ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
               <li>
                 <a href="/" className="hover:text-sky-500">Home</a>
               </li>
@@ -32,7 +33,7 @@ const Footer = () => {
           </div>
 
           {/* Social Media Links */}
-          <div className="flex space-x-4">
+          <div className={`flex space-x-4 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
             <a href="https://facebook.com" className="hover:text-sky-800">
               <i className="fab fa-facebook-f"></i>
             </a>
@@ -49,7 +50,7 @@ const Footer = () => {
         </div>
 
         {/* Legal Links */}
-        <div className="mt-8 text-center text-sm text-sky-600">
+        <div className={`mt-8 text-center text-sm ${theme === 'dark' ? 'text-sky-400' : 'text-sky-600'}`}>
           <p>&copy; {new Date().getFullYear()} My Website. All rights reserved.</p>
           <p>
             <a href="/privacy" className="hover:text-sky-800">

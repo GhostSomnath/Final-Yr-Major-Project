@@ -13,7 +13,6 @@ const internshipsData = {
   basic: [
     { image: img1, title: 'Basic Web Development' },
     { image: img2, title: 'Basic App Development' },
-    
   ],
   proficient: [
     { image: img1, title: 'Proficient Web Development' },
@@ -34,11 +33,13 @@ const allInternships = [
 ];
 
 function InternshipCard({ image, title }) {
-  const {theme}=useTheme();
+  const { theme } = useTheme();
+  const cardClass = `border p-4 rounded-md shadow-md flex flex-col items-center ${theme}`;
+  
   return (
-    <div className={"border p-4 rounded-md shadow-md flex flex-col items-center"+theme}>
+    <div className={cardClass}>
       <img src={image} alt={title} className="w-full h-48 object-cover rounded-md mb-4" />
-      <h2 className="font-bold text-lg text-center mb-4">{title}</h2>
+      <h2 className={`font-bold text-lg text-center mb-4 ${theme} ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{title}</h2>
       <button className="bg-sky-600 text-white px-4 py-2 rounded">Enroll</button>
     </div>
   );
@@ -46,33 +47,35 @@ function InternshipCard({ image, title }) {
 
 function Internships() {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const {theme}=useTheme();
+  const { theme } = useTheme();
+  const tabContainerClass = `p-8 ${theme}`;
+
   const handleTabSelect = (index) => {
     setSelectedIndex(index);
   };
 
   return (
-    <div className={"p-8 "+theme}>
+    <div className={tabContainerClass}>
       {/* Rules Section */}
       <div className="mb-6 border-l-4 border-sky-500 pl-4 text-red-600">
         <h3 className="font-bold text-lg mb-2">Key Features:</h3>
         <ul className="list-disc list-inside space-y-4">
           <li>
-            <q className="font-bold ">Basic Internship</q> contains 1 month internship.
+            <q className="font-bold">Basic Internship</q> contains 1 month internship.
             <ul className="list-disc list-inside pl-6 mt-2">
               <li>Suitable for beginners.</li>
               <li>Introduction to basic concepts.</li>
             </ul>
           </li>
           <li>
-          <q className="font-bold ">Proficient Internship</q> contains 2 month internship.
+            <q className="font-bold">Proficient Internship</q> contains 2 month internship.
             <ul className="list-disc list-inside pl-6 mt-2">
               <li>Intermediate level tasks.</li>
               <li>Hands-on experience with real projects.</li>
             </ul>
           </li>
           <li>
-          <q className="font-bold ">Advance Internship</q> is of 3 months.
+            <q className="font-bold">Advance Internship</q> is of 3 months.
             <ul className="list-disc list-inside pl-6 mt-2">
               <li>Advanced level projects.</li>
               <li>Opportunity to lead a small team.</li>
@@ -83,16 +86,16 @@ function Internships() {
 
       <Tabs selectedIndex={selectedIndex} onSelect={handleTabSelect}>
         <TabList className="flex flex-wrap space-x-2 md:space-x-4 border-b-2 mb-4">
-          <Tab className={`p-3 md:p-4 cursor-pointer rounded-t-lg ${selectedIndex === 0 ? 'bg-sky-500 text-white' : 'bg-white text-sky-600'}`}>
+          <Tab className={`border-white border p-3 md:p-4 cursor-pointer rounded-t-lg ${selectedIndex === 0 ? 'bg-sky-500 text-white' : ' text-sky-600'} ${theme} ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
             All
           </Tab>
-          <Tab className={`p-3 md:p-4 cursor-pointer rounded-t-lg ${selectedIndex === 1 ? 'bg-sky-500 text-white' : 'bg-white text-sky-600'}`}>
+          <Tab className={`border-white border p-3 md:p-4 cursor-pointer rounded-t-lg ${selectedIndex === 1 ? 'bg-sky-500 text-white' : ' text-sky-600'} ${theme} ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
             Basic level
           </Tab>
-          <Tab className={`p-3 md:p-4 cursor-pointer rounded-t-lg ${selectedIndex === 2 ? 'bg-sky-500 text-white' : 'bg-white text-sky-600'}`}>
+          <Tab className={`border-white border p-3 md:p-4 cursor-pointer rounded-t-lg ${selectedIndex === 2 ? 'bg-sky-500 text-white' : ' text-sky-600'} ${theme} ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
             Proficient level
           </Tab>
-          <Tab className={`p-3 md:p-4 cursor-pointer rounded-t-lg ${selectedIndex === 3 ? 'bg-sky-500 text-white' : 'bg-white text-sky-600'}`}>
+          <Tab className={`border-white border p-3 md:p-4 cursor-pointer rounded-t-lg ${selectedIndex === 3 ? 'bg-sky-500 text-white' : ' text-sky-600'} ${theme} ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
             Advance level
           </Tab>
         </TabList>
