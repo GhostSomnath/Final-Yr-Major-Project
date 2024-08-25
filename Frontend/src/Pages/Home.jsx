@@ -9,6 +9,7 @@ import Hero2 from '../components/Hero2';
 
 import { useTheme } from '../context/themeContext';
 import Hero3 from '../components/Hero3';
+import Hero4 from '../components/Hero4';
 // import ScrollAnimation from 'react-animate-on-scroll';
 
 
@@ -19,6 +20,7 @@ function Home() {
       <Hero1 />
       <Hero2 />
       <Hero3 />
+      <Hero4 />
 
 
 

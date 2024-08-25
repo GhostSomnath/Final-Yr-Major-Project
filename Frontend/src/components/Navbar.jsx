@@ -65,7 +65,6 @@ const Navbar = () => {
 
           {/* Menu Items */}
           <div className="flex flex-col items-center space-y-4 mt-10">
-
             <Link to="/" className="hover:text-sky-500">Home</Link>
             <Link to="/internships" className="hover:text-sky-500">Internships</Link>
             <Link to="/updates" className="hover:text-sky-500">Updates</Link>
