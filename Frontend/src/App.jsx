@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -11,7 +11,13 @@ import ContactUs from './Pages/ContactUs';
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import "./App.css";
+import { useTheme } from './context/themeContext';
+import Profile from './Pages/profile';
 function App() {
+  const {theme}=useTheme();
+  useEffect(()=>{
+      document.querySelector("body").className=`${theme}`;
+  },[theme]);
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
@@ -25,6 +31,7 @@ function App() {
             <Route path="/updates" element={<Updates />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/profile" element={<Profile/>}/>
           </Routes>
         </main>
         <Footer />
