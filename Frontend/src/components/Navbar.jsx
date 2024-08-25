@@ -12,7 +12,7 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
-    isDarkMode ? setTheme('light') : setTheme('dark');
+    setTheme(isDarkMode ? 'light' : 'dark');
   };
 
   return (
@@ -25,7 +25,11 @@ const Navbar = () => {
 
         {/* Hamburger Button */}
         <div className="md:hidden">
-          <button onClick={toggleMenu} className={`${isDarkMode ? 'text-sky-100' : 'text-sky-700'} hover:text-sky-500`}>
+          <button 
+            onClick={toggleMenu} 
+            className={`${isDarkMode ? 'text-sky-100' : 'text-sky-700'} hover:text-sky-500`} 
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          >
             {isMenuOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
           </button>
         </div>
@@ -41,14 +45,18 @@ const Navbar = () => {
 
         {/* Right End Buttons (Desktop) */}
         <div className="hidden md:flex space-x-4 items-center">
-          <button onClick={toggleTheme} className={`${isDarkMode ? 'text-sky-100' : 'text-sky-700'} hover:text-sky-500 flex items-center space-x-2`}>
+          <button 
+            onClick={toggleTheme} 
+            className={`${isDarkMode ? 'text-sky-100' : 'text-sky-700'} hover:text-sky-500 flex items-center space-x-2`} 
+            aria-label="Toggle theme"
+          >
             {isDarkMode ? <FaMoon size={20} /> : <FaSun size={20} />}
             <span>Theme</span>
           </button>
-          <button className={`${isDarkMode ? 'text-sky-100' : 'text-sky-700'} hover:text-sky-500 flex items-center space-x-2`}>
+          <Link to="/profile" className={`${isDarkMode ? 'text-sky-100' : 'text-sky-700'} hover:text-sky-500 flex items-center space-x-2`} aria-label="Profile">
             <FaUser size={20} />
             <span>Profile</span>
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -61,7 +69,11 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className={`fixed top-0 left-0 w-full h-full ${isDarkMode ? 'bg-gray-900 text-sky-100' : 'bg-white text-sky-700'} border-b border-sky-300 flex flex-col items-center pt-4 z-50`}>
           {/* Close Button */}
-          <button onClick={toggleMenu} className={`${isDarkMode ? 'text-sky-100' : 'text-sky-700'} hover:text-sky-500 absolute top-4 right-4`}>
+          <button 
+            onClick={toggleMenu} 
+            className={`${isDarkMode ? 'text-sky-100' : 'text-sky-700'} hover:text-sky-500 absolute top-4 right-4`} 
+            aria-label="Close menu"
+          >
             <FaTimes size={24} />
           </button>
 
@@ -72,14 +84,22 @@ const Navbar = () => {
             <Link to="/updates" className="hover:text-sky-500">Updates</Link>
             <Link to="/about" className="hover:text-sky-500">About</Link>
             <Link to="/contact" className="hover:text-sky-500">Contact Us</Link>
-            <button onClick={toggleTheme} className={`${isDarkMode ? 'text-sky-100' : 'text-sky-700'} hover:text-sky-500 flex items-center space-x-2`}>
+            <button 
+              onClick={toggleTheme} 
+              className={`${isDarkMode ? 'text-sky-100' : 'text-sky-700'} hover:text-sky-500 flex items-center space-x-2`} 
+              aria-label="Toggle theme"
+            >
               {isDarkMode ? <FaMoon size={20} /> : <FaSun size={20} />}
               <span>Theme</span>
             </button>
-            <button className={`${isDarkMode ? 'text-sky-100' : 'text-sky-700'} hover:text-sky-500 flex items-center space-x-2`}>
+            <Link 
+              to="/profile" 
+              className={`${isDarkMode ? 'text-sky-100' : 'text-sky-700'} hover:text-sky-500 flex items-center space-x-2`} 
+              aria-label="Profile"
+            >
               <FaUser size={20} />
               <span>Profile</span>
-            </button>
+            </Link>
           </div>
         </div>
       )}
