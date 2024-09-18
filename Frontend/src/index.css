@@ -2,11 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html {
-    scroll-behavior: smooth;
-
+  scroll-behavior: smooth;
 }
+
 body {
   overflow-y: scroll;
   scrollbar-width: none; /* Firefox */
@@ -18,3 +17,48 @@ body::-webkit-scrollbar {
   background: transparent; /* Chrome, Safari, Opera */
 }
 
+/* Custom color variables */
+:root {
+  --background1Color: #ffa8a8;   /* Light gray background */
+  --background2Color: #00ddfa;   /* Soft blue background */
+  --background3Color: #ff7b7b;   /* White background */
+  --heading1Color: #fa00d9;      /* Dark blue for primary headings */
+  --heading2Color: #019b15;      /* Medium blue for secondary headings */
+  --heading3Color: #155304;      /* Light blue for tertiary headings */
+  --paragraphColor: #424242;     /* Dark gray for paragraphs */
+  --hover1Color: #0288d1;        /* Hover effect for primary elements */
+  --hover2Color: #03a9f4;        /* Hover effect for secondary elements */
+  --hover3Color: #b3e5fc;        /* Hover effect for light elements */
+}
+
+
+
+/* Dark theme colors */
+[data-theme='dark'] {
+  --background1Color: #121212;   /* Dark background for dark mode */
+  --background2Color: #1e1e1e;   /* Slightly lighter dark background */
+  --background3Color: #2c2c2c;   /* Even lighter dark background */
+  --heading1Color: #a591ff;      /* White for primary headings in dark mode */
+  --heading2Color: #b0bec5;      /* Light blue-grey for secondary headings */
+  --heading3Color: #90a4ae;      /* Medium blue-grey for tertiary headings */
+  --paragraphColor: #e0e0e0;     /* Light grey for paragraphs in dark mode */
+  --hover1Color: #ff0000;        /* Light purple for hover effect on primary elements */
+  --hover2Color: #2200ff;        /* Light teal for hover effect on secondary elements */
+  --hover3Color: #b7ff00;        /* Light blue for hover effect on light elements */
+}
+
+
+
+/* Custom theme colors */
+[data-theme='custom'] {
+  --background1Color: #e0f7fa;   /* Custom light blue background */
+  --background2Color: #ffebee;   /* Custom light pink background */
+  --background3Color: #ffffff;   /* White background */
+  --heading1Color: #006400;      /* Custom dark green for primary headings */
+  --heading2Color: #ff8c00;      /* Custom dark orange for secondary headings */
+  --heading3Color: #ff69b4;      /* Custom light pink for tertiary headings */
+  --paragraphColor: #000000;     /* Custom black for paragraphs */
+  --hover1Color: #ff4500;        /* Custom orange-red for hover effect on primary elements */
+  --hover2Color: #ff6347;        /* Custom tomato red for hover effect on secondary elements */
+  --hover3Color: #ffe4e1;        /* Custom misty rose for hover effect on light elements */
+}

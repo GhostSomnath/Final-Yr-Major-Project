@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import InternshipsSection from '../components/InternshipsSection';
 
 // Import images
 import img1 from '../assets/ftimg3.png';
@@ -84,6 +85,9 @@ function Internships() {
         </ul>
       </div>
 
+      {/* InternshipsSection Section */}
+      <InternshipsSection theme={theme} />
+
       <Tabs selectedIndex={selectedIndex} onSelect={handleTabSelect}>
         <TabList className="flex flex-wrap space-x-2 md:space-x-4 border-b-2 mb-4">
           <Tab className={`border-white border p-3 md:p-4 cursor-pointer rounded-t-lg ${selectedIndex === 0 ? 'bg-sky-500 text-white' : ' text-sky-600'} ${theme} ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
@@ -129,6 +133,8 @@ function Internships() {
           </div>
         </TabPanel>
       </Tabs>
+
+      
     </div>
   );
 }

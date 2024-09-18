@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Hero4 = () => {
+const ProjectsSection = () => {
   return (
     <section 
-      className="py-20" 
-      style={{ backgroundColor: 'var(--background2Color)', color: 'var(--heading1Color)' }}>
+      className="py-20"
+      style={{ backgroundColor: 'var(--background3Color)', color: 'var(--heading1Color)' }}>
       <div className="container mx-auto px-4 text-center">
         <motion.h2
           className="text-3xl font-bold mb-6"
@@ -14,7 +14,7 @@ const Hero4 = () => {
           transition={{ duration: 0.8 }}
           style={{ color: 'var(--heading1Color)' }}
         >
-          Freelancing Opportunities
+          Explore Projects
         </motion.h2>
         <motion.p
           className="text-lg"
@@ -23,11 +23,11 @@ const Hero4 = () => {
           transition={{ duration: 1 }}
           style={{ color: 'var(--paragraphColor)' }}
         >
-          Explore freelance jobs and work with global clients to gain valuable experience.
+          Check out various projects to enhance your skills and knowledge.
         </motion.p>
       </div>
     </section>
   );
 };
 
-export default Hero4;
+export default ProjectsSection;

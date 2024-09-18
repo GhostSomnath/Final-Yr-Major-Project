@@ -1,46 +1,98 @@
-import { useTheme } from '../context/themeContext'
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useTheme } from '../context/themeContext';
+import CoursesSection from '../components/CoursesSection';
+import FreelancingSection from '../components/FreelancingSection';
+import JobsSection from '../components/JobsSection';
+import ProjectsSection from '../components/ProjectsSection';
+import ResourcesSection from '../components/ResourcesSection';
 
-function Updates() {
-  const {theme}=useTheme();
-  const [messages, setMessages] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetch('http://localhost:5000/api/messages')
-      .then(response => response.json())
-      .then(data => {
-        setMessages(data);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.log('Error fetching messages:', error);
-        setError('Failed to load messages');
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) return <div className={"p-4 text-center text-gray-500 "+theme}>Loading...</div>;
-  if (error) return <div className={"p-4 text-center text-red-500 "+theme}>{error}</div>;
+const Updates = () => {
+  const { theme } = useTheme(); // Destructure theme from useTheme hook
 
   return (
-    <div className={"p-8 bg-white shadow-md rounded-lg max-w-4xl mx-auto "+theme}>
-      <h1 className="text-3xl font-bold text-sky-500 mb-6 text-center">Latest Updates</h1>
-      <div className="space-y-6">
-        {messages.length > 0 ? (
-          messages.map(message => (
-            <div key={message.id} className="p-6 border border-sky-200 rounded-lg bg-sky-50">
-              <p className="text-gray-700 mb-2">{message.text}</p>
-              <span className="text-gray-500 text-sm">{new Date(message.timestamp).toLocaleString()}</span>
-            </div>
-          ))
-        ) : (
-          <div className="text-center text-gray-500">No messages available.</div>
-        )}
+    <div className={`min-h-screen p-4 lg:p-8 ${theme === 'dark' ? 'bg-background1Color text-paragraphColor' : 'bg-background2Color text-heading1Color'}`}>
+      <div className="flex flex-col space-y-8 lg:space-y-12">
+        {/* Updates Messages */}
+        <motion.div
+          className={`p-6 rounded-lg shadow-md ${theme === 'dark' ? 'bg-background3Color text-heading2Color' : 'bg-background2Color text-heading1Color'}`}
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-2xl font-semibold mb-4">Updates from WhatsApp/Telegram</h2>
+          <ul className="space-y-4">
+            <li>
+              <h3 className="text-xl font-semibold">Update Title 1</h3>
+              <p>Details of the update from WhatsApp/Telegram go here.</p>
+            </li>
+            <li>
+              <h3 className="text-xl font-semibold">Update Title 2</h3>
+              <p>Details of the update from WhatsApp/Telegram go here.</p>
+            </li>
+            {/* Add more updates as needed */}
+          </ul>
+        </motion.div>
+
+        {/* Blog Section */}
+        <motion.div
+          className={`p-6 rounded-lg shadow-md ${theme === 'dark' ? 'bg-background3Color text-heading2Color' : 'bg-background2Color text-heading1Color'}`}
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-2xl font-semibold mb-4">Blog Posts</h2>
+          <ul className="space-y-4">
+            <li>
+              <h3 className="text-xl font-semibold">Blog Post Title 1</h3>
+              <p>Excerpt from the blog post goes here. Short description or summary of the content.</p>
+            </li>
+            <li>
+              <h3 className="text-xl font-semibold">Blog Post Title 2</h3>
+              <p>Excerpt from the blog post goes here. Short description or summary of the content.</p>
+            </li>
+            {/* Add more blog posts as needed */}
+          </ul>
+        </motion.div>
+
+        {/* Resources Section */}
+        <motion.div
+          className={`p-6 rounded-lg shadow-md ${theme === 'dark' ? 'bg-background3Color text-heading2Color' : 'bg-background2Color text-heading1Color'}`}
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-2xl font-semibold mb-4">Resources</h2>
+          <ul className="space-y-4">
+            <li>
+              <h3 className="text-xl font-semibold">Resource Title 1</h3>
+              <p>Description or link to the resource goes here.</p>
+            </li>
+            <li>
+              <h3 className="text-xl font-semibold">Resource Title 2</h3>
+              <p>Description or link to the resource goes here.</p>
+            </li>
+            {/* Add more resources as needed */}
+          </ul>
+        </motion.div>
+
+        {/* Courses Section */}
+        <CoursesSection theme={theme} />
+
+        {/* Freelancing Section */}
+        <FreelancingSection theme={theme} />
+
+        {/* Jobs Section */}
+        <JobsSection theme={theme} />
+
+        {/* Projects Section */}
+        <ProjectsSection theme={theme} />
+        
+        {/* Resources Section */}
+        <ResourcesSection theme={theme} />
       </div>
     </div>
   );
-}
+};
 
 export default Updates;

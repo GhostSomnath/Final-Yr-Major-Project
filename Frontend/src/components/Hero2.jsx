@@ -1,69 +1,75 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import heroImage from '../assets/ftimg13.png'; // Replace with your image path
-import { useTheme } from '../context/themeContext'; // Import theme context
+import { useTheme } from '../context/themeContext';
 
 const Hero2 = () => {
   const { theme } = useTheme();
-  const [scrollY, setScrollY] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (sectionRef.current) {
-        const { top, bottom } = sectionRef.current.getBoundingClientRect();
-        setIsVisible(top < window.innerHeight && bottom > 0);
-      }
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check visibility on mount
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className={`relative py-20 soft ${theme} ${theme === 'dark' ? 'text-sky-100' : 'text-sky-600'}`}
+    <section 
+      className="relative py-24 px-6 flex items-center justify-center"
+      style={{ backgroundColor: 'var(--background1Color)', color: 'var(--paragraphColor)', minHeight: '100vh' }}
     >
-      <motion.div
-        className="container mx-auto px-4 flex flex-col md:flex-row items-center md:items-start text-center md:text-left"
-        initial={{ x: '100vw' }} // Start offscreen to the right
-        animate={{ x: isVisible ? '0' : '100vw' }} // Animate to the screen
-        transition={{ type: 'spring', stiffness: 50, damping: 15 }} // Smooth and gradual movement
-      >
-        {/* Hero Image */}
+      <div className="absolute inset-0 overflow-hidden">
         <motion.img
-          src={heroImage}
-          alt="Hero"
-          className="w-full max-w-lg md:mr-10"
-          style={{ transform: `translateX(${Math.max(0, (scrollY - window.innerHeight / 2) * 0.2)}px)` }} // Horizontal movement on scroll
-          transition={{ type: 'spring', stiffness: 50, damping: 15 }} // Smooth and gradual movement
+          src="https://source.unsplash.com/random/1600x900?nature"
+          alt="Background"
+          className="object-cover w-full h-full absolute inset-0 opacity-30"
+          initial={{ scale: 1.2 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 15, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
         />
-
-        {/* Content */}
-        <div className="flex-1 mb-10 md:mb-0 md:pl-10">
-          <motion.h1
-            className="text-4xl font-bold mb-4"
+      </div>
+      <div className="relative z-10 max-w-5xl mx-auto text-center">
+        <motion.h2
+          className="text-4xl md:text-5xl font-bold mb-6"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          style={{ color: 'var(--heading1Color)' }}
+        >
+          Discover Your Next Big Adventure
+        </motion.h2>
+        <motion.p
+          className="text-lg md:text-xl mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          style={{ color: 'var(--paragraphColor)' }}
+        >
+          Explore opportunities and unleash your potential with our curated selection of adventures and experiences.
+        </motion.p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <motion.div
+            className="bg-white p-8 rounded-lg shadow-lg border"
+            style={{ backgroundColor: 'var(--background2Color)', borderColor: 'var(--background3Color)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Discover More with Us
-          </motion.h1>
-          <motion.p
-            className="text-lg"
+            <h3 className="text-xl font-semibold mb-4" style={{ color: 'var(--heading2Color)' }}>
+              Exciting Opportunities
+            </h3>
+            <p>
+              Dive into a world of possibilities with our wide range of exciting opportunities tailored to your interests and goals.
+            </p>
+          </motion.div>
+          <motion.div
+            className="bg-white p-8 rounded-lg shadow-lg border"
+            style={{ backgroundColor: 'var(--background2Color)', borderColor: 'var(--background3Color)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
           >
-            Explore our diverse offerings and find out how we can help you achieve your goals.
-          </motion.p>
+            <h3 className="text-xl font-semibold mb-4" style={{ color: 'var(--heading2Color)' }}>
+              Expert Guidance
+            </h3>
+            <p>
+              Receive personalized guidance from experts who are dedicated to helping you succeed and reach new heights.
+            </p>
+          </motion.div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };
